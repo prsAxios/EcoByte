@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { usePathname } from 'next/navigation'
 import { Button } from "@/components/ui/button"
-import { MapPin, Trash, Coins, Medal, Settings, Home, Car } from "lucide-react"
+import { MapPin, Trash, Coins, MessageSquare, Medal, Settings, Home, Car } from "lucide-react"
 
 const sidebarItems = [
   { href: "/", icon: Home, label: "Home" },
@@ -9,6 +9,8 @@ const sidebarItems = [
   { href: "/collect", icon: Trash, label: "Collect Waste" },
   { href: "/rewards", icon: Coins, label: "Rewards" },
   { href: "/leaderboard", icon: Medal, label: "Leaderboard" },
+  { href: "/dimo", icon: Car, label: "DIMO" }, // New DIMO link
+  // { href: "/messages", icon: MessageSquare, label: "Messages" },
 ]
 
 interface SidebarProps {
@@ -28,7 +30,7 @@ export default function Sidebar({ open }: SidebarProps) {
                 variant={pathname === item.href ? "secondary" : "ghost"}
                 className={`w-full justify-start py-3 ${
                   pathname === item.href 
-                    ? "bg-green-100 text-green-800" 
+                    ? "bg-purple-100 text-purple-800" 
                     : "text-gray-600 hover:bg-gray-100"
                 }`} 
               >
@@ -44,7 +46,7 @@ export default function Sidebar({ open }: SidebarProps) {
               variant={pathname === "/settings" ? "secondary" : "outline"}
               className={`w-full py-3 ${
                 pathname === "/settings"
-                  ? "bg-green-100 text-green-800"
+                  ? "bg-purple-100 text-purple-800"
                   : "text-gray-600 border-gray-300 hover:bg-gray-100"
               }`} 
             >
