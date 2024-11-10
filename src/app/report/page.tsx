@@ -36,7 +36,7 @@ export default function ReportPage() {
 
   const [ifExpired, setIfExpired] = useState(false);
 
-  const [recipe, setRecipe] = useState('');
+  const [recipe, setRecipe] = useState("");
 
   const [reports, setReports] = useState<
     Array<{
@@ -108,6 +108,7 @@ export default function ReportPage() {
       };
       reader.readAsDataURL(selectedFile);
     }
+
   };
 
   const readFileAsBase64 = (file: File): Promise<string> => {
@@ -241,30 +242,70 @@ export default function ReportPage() {
 
       setRecipe(rawText);
 
+      //     try {
+      //       // Parse the clean response text as JSON
+      //       const jsonMatch = rawText.match(/```json\n([\s\S]*?)\n```/);
+      //       const jsonText = jsonMatch ? jsonMatch[1] : rawText;
+
+      //       // Parse JSON
+      //       const parsedResult = JSON.parse(jsonText);
+      //       console.log("Parsed result:", parsedResult);
+      //       if (parsedResult.ifExpired==true) {
+      //         setIfExpired(true);
+      //       }
+
+      //       console.log(ifExpired);
+      //       // const parsedResult = JSON.parse(cleanText);
+
+      //       // Validate the parsed result
+      //       if (
+      //         parsedResult.foodType &&
+      //         parsedResult.expiryDate &&
+      //         parsedResult.confidence
+
+      //       ) {
+      //         setVerificationResult(parsedResult);
+      //         setVerificationStatus("success");
+      //         setNewReport({
+      //           ...newReport,
+      //           type: parsedResult.foodType,
+      //           amount: parsedResult.expiryDate,
+      //         });
+      //       } else {
+      //         console.error("Invalid verification result:", parsedResult);
+      //         setVerificationStatus("failure");
+      //       }
+      //     } catch (error) {
+      //       console.error("Failed to parse JSON response:", cleanText);
+      //       setVerificationStatus("failure");
+      //     }
+      //   } catch (error) {
+      //     console.error("Error verifying waste:", error);
+      //     setVerificationStatus("failure");
+      //   }
+
+      // };
+
       try {
-        // Parse the clean response text as JSON
+        // Extract JSON from response and parse
         const jsonMatch = rawText.match(/```json\n([\s\S]*?)\n```/);
         const jsonText = jsonMatch ? jsonMatch[1] : rawText;
-
-        // Parse JSON
         const parsedResult = JSON.parse(jsonText);
-        console.log("Parsed result:", parsedResult);
 
-        if (parsedResult.ifExpired) {
-          setIfExpired(true);
-        }
-
-        console.log(ifExpired);
-        // const parsedResult = JSON.parse(cleanText);
-
-        // Validate the parsed result
         if (
           parsedResult.foodType &&
           parsedResult.expiryDate &&
           parsedResult.confidence
         ) {
+          // Check if expired by comparing dates
+          const expiryDate = new Date(parsedResult.expiryDate);
+          const today = new Date();
+          const isExpired = today > expiryDate;
+
+          setIfExpired(isExpired);
           setVerificationResult(parsedResult);
           setVerificationStatus("success");
+
           setNewReport({
             ...newReport,
             type: parsedResult.foodType,
@@ -275,7 +316,7 @@ export default function ReportPage() {
           setVerificationStatus("failure");
         }
       } catch (error) {
-        console.error("Failed to parse JSON response:", cleanText);
+        console.error("Failed to parse JSON response:", rawText);
         setVerificationStatus("failure");
       }
     } catch (error) {
@@ -349,6 +390,7 @@ export default function ReportPage() {
       }
     };
     checkUser();
+    // setIfExpired(false);
   }, [router]);
 
   return (
@@ -506,7 +548,6 @@ export default function ReportPage() {
             />
           </div>
 
-
           <div>
             <label
               htmlFor="amount"
@@ -546,10 +587,7 @@ export default function ReportPage() {
 
           </div> */}
 
-
-            <DateTimePicker/>
-
-
+          <DateTimePicker />
 
           {/* <Button 
           type="submit" 
@@ -564,21 +602,20 @@ export default function ReportPage() {
               {recipe}
 
             </div> */}
-              
         </div>
 
-        <div className="flex items-center justify-center"> 
-  <div className="border text-xl text-center p-4 bg-orange-300 rounded-xl my-5">
-    <Link
-      href={{
-        pathname: "/recipe",
-        query: { text: recipe },
-      }}
-    >
-      Generate Recipe
-    </Link>
-  </div>
-</div>
+        <div className="flex items-center justify-center">
+          <div className="border text-xl text-center p-4 bg-orange-300 rounded-xl my-5">
+            <Link
+              href={{
+                pathname: "/recipe",
+                query: { text: recipe },
+              }}
+            >
+              Generate Recipe
+            </Link>
+          </div>
+        </div>
 
         <Button
           type="submit"
