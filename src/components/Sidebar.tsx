@@ -23,7 +23,7 @@ export default function Sidebar({ open }: SidebarProps) {
   const pathname = usePathname();
 
   return (
-    <aside className={`py-2 bg-opacity-20 bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 text-white w-64 fixed inset-y-0 left-0 z-30 transform transition-transform duration-300 ease-in-out shadow-lg ${open ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0`}>
+    <aside className={`py-2 bg-opacity-50 bg-gradient-to-br from-blue-200 via-purple-300 to-pink-200 text-white w-64 fixed inset-y-0 left-0 z-30 transform transition-transform duration-300 ease-in-out shadow-lg ${open ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0`}>
       <nav className="h-full py-12 flex flex-col justify-between">
         <div className="px-6 py-8 space-y-6">
           {sidebarItems.map((item) => (
@@ -44,7 +44,7 @@ export default function Sidebar({ open }: SidebarProps) {
           <Link href="/settings" passHref>
             <Button 
               variant={pathname === "/settings" ? "secondary" : "outline"}
-              className={`w-full  py-3 rounded-lg transition-all duration-200 ease-in-out 
+              className={`w-full py-3 rounded-lg transition-all duration-200 ease-in-out 
                 ${pathname === "/settings" ? "bg-purple-100 text-purple-800 shadow-md" : "text-white border-white hover:bg-white hover:bg-opacity-10"}
               `}
             >

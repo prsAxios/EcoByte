@@ -242,12 +242,7 @@ const PickupAndDrop: React.FC = () => {
             <h3 className="text-2xl font-semibold text-purple-700">
               {details.isPickup ? "Pickup" : "Drop"} Details
             </h3>
-            <button
-              onClick={() => setIsEditing(true)}
-              className="text-sm text-blue-500 hover:underline"
-            >
-              Edit
-            </button>
+            
           </div>
 
           <div>
