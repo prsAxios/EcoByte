@@ -20,10 +20,8 @@ export default function FoodBankForm() {
     name: '',
     contact: '',
     orphansCount: '',
-    orphansLocation: '',
     foodBankLocation: '',
     missionStatement: '',
-    budget: '',
   })
   
   const [submitted, setSubmitted] = useState(false)
@@ -63,10 +61,8 @@ export default function FoodBankForm() {
       name: '',
       contact: '',
       orphansCount: '',
-      orphansLocation: '',
       foodBankLocation: '',
       missionStatement: '',
-      budget: '',
     })
   }
 

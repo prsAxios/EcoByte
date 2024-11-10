@@ -486,7 +486,7 @@ export default function ReportPage() {
           <div className="border m-5 bg-red-500 text-white text-2xl rounded-lg">
             <h1 className="text-3xl text-center p-5">Food Product Expired</h1>
             <h3 className="text-center text-lg -mt-5 mb-2">
-              You cannot donate this product
+              You cannot Donate/Consume this product
             </h3>
           </div>
         )}
@@ -499,23 +499,6 @@ export default function ReportPage() {
             >
               Location
             </label>
-            {isLoaded ? (
-              <StandaloneSearchBox
-                onLoad={onLoad}
-                onPlacesChanged={onPlacesChanged}
-              >
-                <input
-                  type="text"
-                  id="location"
-                  name="location"
-                  value={newReport.location}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
-                  placeholder="Enter Food Donating location"
-                />
-              </StandaloneSearchBox>
-            ) : (
               <input
                 type="text"
                 id="location"
@@ -526,7 +509,6 @@ export default function ReportPage() {
                 className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
                 placeholder="Enter waste location"
               />
-            )}
           </div>
           <div>
             <label

@@ -83,7 +83,7 @@ export default function Home() {
       <section className="text-center mb-20">
         <AnimatedGlobe />
         <h1 className="text-6xl font-bold mb-6 text-purple-800 tracking-tight">
-          <LucideHeart/> LeftOverLove<span className="text-gray-600"> - Food Tracking</span>
+          EcoEats<span className="text-gray-600"> - Food Tracking</span>
         </h1>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
           Join our community in making waste management more efficient and rewarding!

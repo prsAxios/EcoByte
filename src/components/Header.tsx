@@ -202,7 +202,7 @@ export default function Header({ onMenuClick, totalEarnings }: HeaderProps) {
 
   return (
     <header className="bg-black border-b border-gray-200 sticky top-0 z-50 fixed top-0 left-0 w-full p-4 bg-black bg-opacity-20 backdrop-blur-md shadow-lg z-50">
-      <div className="flex items-center justify-between px-4 py-2">
+      <div className="flex items-center justify-between px-4">
         <div className="flex items-center">
           <Button variant="ghost" size="icon" className="mr-2 md:mr-4" onClick={onMenuClick}>
             <Menu className="h-6 w-6" />
@@ -210,8 +210,8 @@ export default function Header({ onMenuClick, totalEarnings }: HeaderProps) {
           <Link href="/" className="flex items-center">
             <Leaf className="h-6 w-6 md:h-8 md:w-8 text-purple-500 mr-1 md:mr-2" />
             <div className="flex flex-col">
-              <span className="font-bold text-base md:text-lg text-gray-800">LeftOverLove</span>
-              <span className="text-[8px] md:text-[10px] text-gray-500 -mt-1">Come join us.</span>
+              <span className="font-bold text-xl text-gray-800">EcoEats</span>
+              <span className=" text-gray-500 -mt-1">Waste wisely, Live lively</span>
             </div>
           </Link>
         </div>
