@@ -10,7 +10,7 @@ import { useSessionSigs } from '@/hooks/useSessionSigs'
 
 // Custom leaf icon
 const leafIcon = new L.Icon({
-  iconUrl: '/leaflet/leaf-green.png',
+  iconUrl: '/leaflet/leaf-purple.png',
   shadowUrl: '/leaflet/leaf-shadow.png',
   iconSize: [38, 95],
   shadowSize: [50, 64],
@@ -59,7 +59,7 @@ export default function Map() {
             <Marker key={index} position={[point.lat, point.lng]} icon={leafIcon}>
               <Popup>
                 Waste Hotspot <br />
-                <Leaf className="w-6 h-6 inline-block mr-2 text-green-600" />
+                <Leaf className="w-6 h-6 inline-block mr-2 text-purple-600" />
                 High waste generation area
               </Popup>
             </Marker>

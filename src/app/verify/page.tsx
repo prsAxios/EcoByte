@@ -48,7 +48,7 @@ export default function VerifyWastePage() {
     <div className="p-8 max-w-4xl mx-auto">
       <h1 className="text-3xl font-bold mb-8 text-gray-800">Verify Waste Collection</h1>
       
-      <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-md mb-8">
+      <form onSubmit={handleSubmit} className="bg-black p-6 rounded-xl shadow-md mb-8">
         <div className="mb-6">
           <label htmlFor="waste-image" className="block text-sm font-medium text-gray-700 mb-2">
             Upload Waste Image
@@ -59,7 +59,7 @@ export default function VerifyWastePage() {
               <div className="flex text-sm text-gray-600">
                 <label
                   htmlFor="waste-image"
-                  className="relative cursor-pointer bg-white rounded-md font-medium text-green-600 hover:text-green-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-green-500"
+                  className="relative cursor-pointer bg-black rounded-md font-medium text-purple-600 hover:text-purple-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-purple-500"
                 >
                   <span>Upload a file</span>
                   <input id="waste-image" name="waste-image" type="file" className="sr-only" onChange={handleFileChange} accept="image/*" />
@@ -77,10 +77,10 @@ export default function VerifyWastePage() {
           </div>
         )}
         
-        <Button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white" disabled={!file || verificationStatus === 'verifying'}>
+        <Button type="submit" className="w-full bg-purple-600 hover:bg-purple-700 text-black" disabled={!file || verificationStatus === 'verifying'}>
           {verificationStatus === 'verifying' ? (
             <>
-              <Loader className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" />
+              <Loader className="animate-spin -ml-1 mr-3 h-5 w-5 text-black" />
               Verifying...
             </>
           ) : 'Verify Waste'}
@@ -88,14 +88,14 @@ export default function VerifyWastePage() {
       </form>
 
       {verificationStatus === 'success' && verificationResult && (
-        <div className="bg-green-50 border-l-4 border-green-400 p-4 mb-8">
+        <div className="bg-purple-50 border-l-4 border-purple-400 p-4 mb-8">
           <div className="flex">
             <div className="flex-shrink-0">
-              <CheckCircle className="h-5 w-5 text-green-400" />
+              <CheckCircle className="h-5 w-5 text-purple-400" />
             </div>
             <div className="ml-3">
-              <h3 className="text-sm font-medium text-green-800">Verification Successful</h3>
-              <div className="mt-2 text-sm text-green-700">
+              <h3 className="text-sm font-medium text-purple-800">Verification Successful</h3>
+              <div className="mt-2 text-sm text-purple-700">
                 <p>Waste Type: {verificationResult.wasteType}</p>
                 <p>Quantity: {verificationResult.quantity}</p>
                 <p>Confidence: {(verificationResult.confidence * 100).toFixed(2)}%</p>

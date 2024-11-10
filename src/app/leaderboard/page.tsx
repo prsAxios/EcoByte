@@ -58,8 +58,8 @@ export default function LeaderboardPage() {
           </div>
         ) : (
           <div className="bg-white shadow-xl rounded-2xl overflow-hidden">
-            <div className="bg-gradient-to-r from-green-500 to-green-600 p-6">
-              <div className="flex justify-between items-center text-white">
+            <div className="bg-gradient-to-r from-purple-500 to-purple-600 p-6">
+              <div className="flex justify-between items-center text-black">
                 <Trophy className="h-10 w-10" />
                 <span className="text-2xl font-bold">Top Performers</span>
                 <Award className="h-10 w-10" />
@@ -78,7 +78,7 @@ export default function LeaderboardPage() {
                 <tbody>
                   {rewards.map((reward, index) => (
                     <tr key={reward.id} className={`${user && user.id === reward.userId ? 'bg-indigo-50' : ''} hover:bg-gray-50 transition-colors duration-150 ease-in-out`}>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-6 py-4 blackspace-nowrap">
                         <div className="flex items-center">
                           {index < 3 ? (
                             <Crown className={`h-6 w-6 ${index === 0 ? 'text-yellow-400' : index === 1 ? 'text-gray-400' : 'text-yellow-600'}`} />
@@ -87,7 +87,7 @@ export default function LeaderboardPage() {
                           )}
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-6 py-4 blackspace-nowrap">
                         <div className="flex items-center">
                           <div className="flex-shrink-0 h-10 w-10">
                             <User className="h-full w-full rounded-full bg-gray-200 text-gray-500 p-2" />
@@ -97,13 +97,13 @@ export default function LeaderboardPage() {
                           </div>
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-6 py-4 blackspace-nowrap">
                         <div className="flex items-center">
                           <Award className="h-5 w-5 text-indigo-500 mr-2" />
                           <div className="text-sm font-semibold text-gray-900">{reward.points.toLocaleString()}</div>
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-6 py-4 blackspace-nowrap">
                         <span className="px-3 py-1 inline-flex text-sm leading-5 font-semibold rounded-full bg-indigo-100 text-indigo-800">
                           Level {reward.level}
                         </span>

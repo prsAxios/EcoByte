@@ -2,7 +2,7 @@
 
 
 import { db } from './dbConfig';
-import { Users, Reports, Rewards, CollectedWastes, Notifications, Transactions } from './schema';
+import { Users, Reports, Rewards, CollectedWastes, Notifications, Transactions ,FoodBanks} from './schema';
 import { eq, sql, and, desc } from 'drizzle-orm';
 
 export async function createUser(email: string, name: string) {
@@ -480,3 +480,40 @@ export async function getUserBalance(userId: number): Promise<number> {
   return Math.max(balance, 0); // Ensure balance is never negative
 }
 
+
+
+export async function createFoodBank(
+  name: string, 
+  contact: string, 
+  orphansLocation: string, 
+  foodBankLocation: string, 
+  missionStatement: string, 
+  budget: string
+) {
+  try {
+    // Ensure all required fields have data or use a default value if not
+    if (!orphansLocation || !foodBankLocation || !missionStatement || !budget) {
+      throw new Error("Missing required fields");
+    }
+
+    const [foodBank] = await db
+      .insert(FoodBanks)
+      .values({ 
+        name, 
+        contact, 
+        orphans_location: orphansLocation, // Database field name
+        food_bank_location: foodBankLocation, // Database field name
+        mission_statement: missionStatement, 
+        budget, 
+        created_at: new Date(), 
+        updated_at: new Date() 
+      })
+      .returning()
+      .execute();
+
+    return foodBank;
+  } catch (error) {
+    console.error("Error creating food bank:", error);
+    throw error; // Ensure error is thrown for the frontend to catch
+  }
+}

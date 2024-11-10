@@ -1,3 +1,5 @@
+
+
 import { integer, varchar, pgTable, serial, text, timestamp, jsonb, boolean } from "drizzle-orm/pg-core";
 
 // Users table
@@ -13,13 +15,15 @@ export const Reports = pgTable("reports", {
   id: serial("id").primaryKey(),
   userId: integer("user_id").references(() => Users.id).notNull(),
   location: text("location").notNull(),
-  foodType: varchar("waste_type", { length: 255 }).notNull(),
+  foodType: varchar("waste_type", { length: 255 }).notNull(), 
   expiryDate: varchar("amount", { length: 255 }).notNull(),
   imageUrl: text("image_url"),
   verificationResult: jsonb("verification_result"),
   status: varchar("status", { length: 255 }).notNull().default("pending"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   collectorId: integer("collector_id").references(() => Users.id),
+
+
 });
 
 // Rewards table
@@ -64,3 +68,19 @@ export const Transactions = pgTable("transactions", {
   description: text("description").notNull(),
   date: timestamp("date").defaultNow().notNull(),
 });
+
+
+// FoodBanks table
+export const FoodBanks = pgTable("food_banks", {
+  id: serial("id").primaryKey(),  // Unique ID for each food bank
+  name: varchar("name", { length: 255 }).notNull(),  // Name of the food bank
+  contact: varchar("contact", { length: 255 }).notNull(),  // Contact information (e.g., phone/email)
+  orphansLocation: text("orphans_location").notNull(),  // Location of the orphans served
+  foodBankLocation: text("food_bank_location").notNull(),  // Location of the food bank
+  missionStatement: text("mission_statement").notNull(),  // Mission statement of the food bank
+  budget: varchar("budget", { length: 255 }).notNull(),  // Budget for the food bank
+  createdAt: timestamp("created_at").defaultNow().notNull(),  // Time the record was created
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),  // Time the record was last updated
+});
+  
+

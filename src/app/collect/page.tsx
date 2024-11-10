@@ -206,7 +206,7 @@ export default function CollectPage() {
   )
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8 max-w-4xl mx-auto">
+    <div className="p-4 sm:p-6 lg:p-8 max-w-4xl mx-auto shadow-2xl rounded-xl">
       <h1 className="text-3xl font-semibold mb-6 text-gray-800">Waste Collection Tasks</h1>
       
       <div className="mb-4 flex items-center">
@@ -249,7 +249,7 @@ export default function CollectPage() {
                       {task.foodType.length > 8 ? `${task.foodType.slice(0, 8)}...` : task.foodType}
                     </span>
                     {hoveredWasteType === task.foodType && (
-                      <div className="absolute left-0 top-full mt-1 p-2 bg-gray-800 text-white text-xs rounded shadow-lg z-10">
+                      <div className="absolute left-0 top-full mt-1 p-2 bg-gray-800 text-black text-xs rounded shadow-lg z-10">
                         {task.foodType}
                       </div>
                     )}
@@ -278,7 +278,7 @@ export default function CollectPage() {
                     <span className="text-yellow-600 text-sm font-medium">In progress by another collector</span>
                   )}
                   {task.status === 'verified' && (
-                    <span className="text-green-600 text-sm font-medium">Reward Earned</span>
+                    <span className="text-purple-600 text-sm font-medium">Reward Earned</span>
                   )}
                 </div>
               </div>
@@ -308,7 +308,7 @@ export default function CollectPage() {
       )}
 
       {selectedTask && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div className="fixed inset-0 bg-white bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-lg p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <h3 className="text-xl font-semibold mb-4">Verify Collection</h3>
             <p className="mb-4 text-sm text-gray-600">Upload a photo of the collected waste to verify and earn your reward.</p>
@@ -348,7 +348,7 @@ export default function CollectPage() {
               ) : 'Verify Collection'}
             </Button>
             {verificationStatus === 'success' && verificationResult && (
-              <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-md">
+              <div className="mt-4 p-4 bg-purple-50 border border-purple-200 rounded-md">
                 <p>Waste Type Match: {verificationResult.foodTypeMatch? 'Yes' : 'No'}</p>
                 <p>Quantity Match: {verificationResult.expiryDateMatch ? 'Yes' : 'No'}</p>
                 <p>Confidence: {(verificationResult.confidence * 100).toFixed(2)}%</p>
@@ -378,7 +378,7 @@ function StatusBadge({ status }: { status: CollectionTask['status'] }) {
   const statusConfig = {
     pending: { color: 'bg-yellow-100 text-yellow-800', icon: Clock },
     in_progress: { color: 'bg-blue-100 text-blue-800', icon: Trash2 },
-    completed: { color: 'bg-green-100 text-green-800', icon: CheckCircle },
+    completed: { color: 'bg-purple-100 text-purple-800', icon: CheckCircle },
     verified: { color: 'bg-purple-100 text-purple-800', icon: CheckCircle },
   }
 
