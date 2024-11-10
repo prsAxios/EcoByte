@@ -507,7 +507,7 @@ export default function ReportPage() {
                 onChange={handleInputChange}
                 required
                 className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
-                placeholder="Enter waste location"
+                placeholder="Enter location"
               />
           </div>
           <div>
@@ -586,20 +586,21 @@ export default function ReportPage() {
             </div> */}
         </div>
 
-        <div className="flex items-center justify-center">
-          <div className="border text-xl text-center p-4 bg-orange-300 rounded-xl my-5">
-            <Link
-              href={{
-                pathname: "/recipe",
-                query: { text: recipe },
-              }}
-            >
-              Generate Recipe
-            </Link>
-          </div>
-        </div>
 
-        <Button
+{!ifExpired && <div className="flex flex-col gap-2 items-center justify-center my-5">      
+  <div className="bg-white/30 backdrop-blur-md border border-white/20 text-xl text-center p-6 rounded-xl shadow-lg hover:scale-105 transition-all duration-300 ease-in-out transform">
+    <Link
+      href={{
+        pathname: "/recipe",
+        query: { text: recipe },
+      }}
+      className=" text-black font-semibold hover:text-purple-800 transition-colors duration-200"
+    >
+      Generate Recipe
+    </Link>
+  </div>
+
+  <Button
           type="submit"
           className="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 text-lg rounded-xl transition-colors duration-300 flex items-center justify-center"
           disabled={isSubmitting}
@@ -613,6 +614,11 @@ export default function ReportPage() {
             "Submit Report"
           )}
         </Button>
+</div>}
+        
+
+
+       
       </form>
 
       <h2 className="text-3xl font-semibold mb-6 text-gray-800">

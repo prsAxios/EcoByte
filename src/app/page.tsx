@@ -11,7 +11,10 @@ const poppins = Poppins({
   weight: ['300', '400', '600'],
   subsets: ['latin'],
   display: 'swap',
-})
+});
+
+import gsap from 'gsap'
+import {useGSAP} from ''
 
 function AnimatedGlobe() {
   return (

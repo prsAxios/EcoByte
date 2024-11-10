@@ -205,13 +205,13 @@ export default function Header({ onMenuClick, totalEarnings }: HeaderProps) {
       <div className="flex items-center justify-between px-4">
         <div className="flex items-center">
           <Button variant="ghost" size="icon" className="mr-2 md:mr-4" onClick={onMenuClick}>
-            <Menu className="h-6 w-6" />
+            <Menu className="h-6 w-6 text-white" />
           </Button>
           <Link href="/" className="flex items-center">
             <Leaf className="h-6 w-6 md:h-8 md:w-8 text-purple-500 mr-1 md:mr-2" />
             <div className="flex flex-col">
-              <span className="font-bold text-xl text-gray-800">EcoEats</span>
-              <span className=" text-gray-500 -mt-1">Waste wisely, Live lively</span>
+              <span className="font-bold text-xl text-white">EcoEats</span>
+              <span className=" text-white -mt-1">Waste wisely, Live lively</span>
             </div>
           </Link>
         </div>
@@ -236,9 +236,9 @@ export default function Header({ onMenuClick, totalEarnings }: HeaderProps) {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon" className="mr-2 relative">
-                <Bell className="h-5 w-5" />
+                <Bell className="h-5 w-5 text-white" />
                 {notifications.length > 0 && (
-                  <Badge className="absolute -top-1 -right-1 px-1 min-w-[1.2rem] h-5">
+                  <Badge className="absolute -top-1 -right-1 px-1 min-w-[1.2rem] h-5 text-white ">
                     {notifications.length}
                   </Badge>
                 )}

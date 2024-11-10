@@ -352,7 +352,7 @@ Respond only in the following JSON format:
   return (
     <div className="p-4 sm:p-6 lg:p-8 max-w-4xl mx-auto">
       <h1 className="text-3xl font-semibold mb-6 text-gray-800">
-        Waste Collection Tasks
+        Food Collection 
       </h1>
 
       <div className="mb-4 flex items-center">
