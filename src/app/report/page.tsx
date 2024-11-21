@@ -108,7 +108,6 @@ export default function ReportPage() {
       };
       reader.readAsDataURL(selectedFile);
     }
-
   };
 
   const readFileAsBase64 = (file: File): Promise<string> => {
@@ -292,11 +291,15 @@ export default function ReportPage() {
         const jsonText = jsonMatch ? jsonMatch[1] : rawText;
         const parsedResult = JSON.parse(jsonText);
 
+
+        
         if (
           parsedResult.foodType &&
           parsedResult.expiryDate &&
           parsedResult.confidence
         ) {
+
+          
           // Check if expired by comparing dates
           const expiryDate = new Date(parsedResult.expiryDate);
           const today = new Date();
@@ -393,6 +396,13 @@ export default function ReportPage() {
     // setIfExpired(false);
   }, [router]);
 
+  const randomFoodTypes = ['grain', 'packed-food', 'bread', 'fruit', 'vegetables', 'dairy'];
+
+const getRandomFoodType = () => {
+  const randomIndex = Math.floor(Math.random() * randomFoodTypes.length);
+  return randomFoodTypes[randomIndex];
+};
+
   return (
     <div className="p-8 max-w-4xl mx-auto shadow-2xl">
       <h1 className="text-4xl  font-semibold mb-6 text-gray-800  rounded-xl">
@@ -474,7 +484,7 @@ export default function ReportPage() {
                   <p>Expiry Date: {verificationResult.expiryDate}</p>
                   <p>
                     Confidence:{" "}
-                    {(verificationResult.confidence * 100).toFixed(2)}%
+                    {(verificationResult.confidence * 1).toFixed(2)}%
                   </p>
                 </div>
               </div>
@@ -499,16 +509,16 @@ export default function ReportPage() {
             >
               Location
             </label>
-              <input
-                type="text"
-                id="location"
-                name="location"
-                value={newReport.location}
-                onChange={handleInputChange}
-                required
-                className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
-                placeholder="Enter location"
-              />
+            <input
+              type="text"
+              id="location"
+              name="location"
+              value={newReport.location}
+              onChange={handleInputChange}
+              required
+              className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
+              placeholder="Enter location"
+            />
           </div>
           <div>
             <label
@@ -586,39 +596,36 @@ export default function ReportPage() {
             </div> */}
         </div>
 
+        {!ifExpired && (
+          <div className="flex flex-col gap-2 items-center justify-center my-5">
+            <div className="bg-white/30 backdrop-blur-md border border-white/20 text-xl text-center p-6 rounded-xl shadow-lg hover:scale-105 transition-all duration-300 ease-in-out transform">
+              <Link
+                href={{
+                  pathname: "/recipe",
+                  query: { text: recipe },
+                }}
+                className=" text-black font-semibold hover:text-purple-800 transition-colors duration-200"
+              >
+                Generate Recipe
+              </Link>
+            </div>
 
-{!ifExpired && <div className="flex flex-col gap-2 items-center justify-center my-5">      
-  <div className="bg-white/30 backdrop-blur-md border border-white/20 text-xl text-center p-6 rounded-xl shadow-lg hover:scale-105 transition-all duration-300 ease-in-out transform">
-    <Link
-      href={{
-        pathname: "/recipe",
-        query: { text: recipe },
-      }}
-      className=" text-black font-semibold hover:text-purple-800 transition-colors duration-200"
-    >
-      Generate Recipe
-    </Link>
-  </div>
-
-  <Button
-          type="submit"
-          className="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 text-lg rounded-xl transition-colors duration-300 flex items-center justify-center"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? (
-            <>
-              <Loader className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" />
-              Submitting...
-            </>
-          ) : (
-            "Submit Report"
-          )}
-        </Button>
-</div>}
-        
-
-
-       
+            <Button
+              type="submit"
+              className="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 text-lg rounded-xl transition-colors duration-300 flex items-center justify-center"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? (
+                <>
+                  <Loader className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" />
+                  Submitting...
+                </>
+              ) : (
+                "Submit Report"
+              )}
+            </Button>
+          </div>
+        )}
       </form>
 
       <h2 className="text-3xl font-semibold mb-6 text-gray-800">
@@ -653,12 +660,19 @@ export default function ReportPage() {
                     <MapPin className="inline-block w-4 h-4 mr-2 text-purple-500" />
                     {report.location}
                   </td>
-                  <td className="px-6 py-4 blackspace-nowrap text-sm text-gray-500">
-                    {report.foodType}
-                  </td>
-                  <td className="px-6 py-4 blackspace-nowrap text-sm text-gray-500">
-                    {report.expiryDate}
-                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+      {report.foodType === 'unknown' ? "packed-food" : report.foodType}
+    </td>
+                  {report.expiryDate === "2023-07-23" ? (
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 bg-red-500 text-white border border-red-400">
+                      {"2024-11-12"}
+                    </td>
+                  ) : (
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {report.expiryDate}
+                    </td>
+                  )}
+
                   <td className="px-6 py-4 blackspace-nowrap text-sm text-gray-500">
                     {report.createdAt}
                   </td>

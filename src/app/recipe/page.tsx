@@ -22,9 +22,9 @@ const RecipePage = () => {
   }, [text]);
 
   return (
-    <div className="rounded-xl min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 p-8">
+    <div className="rounded-xl  min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 p-8">
       <div className="bg-white bg-opacity-80 p-10 rounded-3xl shadow-2xl max-w-3xl w-full transition-all duration-500 transform hover:scale-105 hover:bg-opacity-90">
-        <h1 className="text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-700 to-pink-600 mb-8">
+        <h1 className="py-5 text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-700 to-pink-600 mb-8">
           Recipe Page
         </h1>
         

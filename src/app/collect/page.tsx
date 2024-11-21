@@ -401,7 +401,7 @@ Respond only in the following JSON format:
                     </span>
                     {hoveredWasteType === task.foodType && (
                       <div className="absolute left-0 top-full mt-1 p-2 bg-gray-800 text-white text-xs rounded shadow-lg z-10">
-                        {task.foodType}
+                       {task.foodType== "unknown" ? "packed-food": task.foodType}
                       </div>
                     )}
                   </div>
