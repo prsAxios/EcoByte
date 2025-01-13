@@ -17,3 +17,6 @@ Donation feature connecting users with food banks.
 🏆 Achievements
 Built within 24 hours during Technovate 2.0 Rotaract Hackathon (SPIT) under the eco-sustainability theme.
 
+![image](https://github.com/user-attachments/assets/d522f7e5-9d7c-4052-ab9e-5a11882c808b)
+
+
